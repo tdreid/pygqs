@@ -3,30 +3,37 @@ from random import randint
 import color
 import pygame
 
-log.basicConfig(level=log.INFO)
-
 HEIGHT = 480
 WIDTH =  600
 SIZE = (WIDTH, HEIGHT)
+CAPTION = 'Yet Another pygqs Game'
+FPS = 60
 
-pygame.init()
-canvas = pygame.display.set_mode(SIZE)
+def main():
+    log.basicConfig(level=log.INFO)
 
-endOfGame = False
+    pygame.init()
+    pygame.display.set_caption(CAPTION)
+    canvas = pygame.display.set_mode(SIZE)
 
-while not endOfGame:
+    endOfGame = False
+    clock = pygame.time.Clock()
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            log.info('The game loop will exit.')
-            endOfGame = True
+    while not endOfGame:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                log.info('The game loop will exit.')
+                endOfGame = True
 
-        canvas.fill(color.gray)
+            canvas.fill(color.GRAY)
 
-        # Here code the game do
-        # E.g. To create an amusement where input makes a circle pulsate...
-        # pygame.draw.circle(canvas, color.purple, (WIDTH / 2, HEIGHT / 2), randint(50,100), 1)
+            # Here code the game do
+            # E.g. To create an amusement where input makes a circle pulsate...
+            pygame.draw.circle(canvas, color.PURPLE, (WIDTH / 2, HEIGHT / 2), randint(50,100), 1)
+            pygame.display.flip()
 
-        pygame.display.flip()
+    pygame.quit()
 
-pygame.quit()
+if __name__ == "__main__":
+    main()
