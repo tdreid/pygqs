@@ -14,7 +14,7 @@ def main():
 
     pygame.init()
     pygame.display.set_caption(CAPTION)
-    canvas = pygame.display.set_mode(SIZE)
+    CANVAS = pygame.display.set_mode(SIZE)
 
     endOfGame = False
     clock = pygame.time.Clock()
@@ -26,11 +26,11 @@ def main():
                 log.info('The game loop will exit.')
                 endOfGame = True
 
-            canvas.fill(color.GRAY)
+            CANVAS.fill(color.GRAY)
 
             # Here code the game do
             # E.g. To create an amusement where input makes a circle pulsate...
-            pygame.draw.circle(canvas, color.PURPLE, (WIDTH / 2, HEIGHT / 2), randint(50,100), 1)
+            pygame.draw.circle(CANVAS, color.PURPLE, (WIDTH / 2, HEIGHT / 2), randint(50,100), 1)
             pygame.display.flip()
 
     pygame.quit()
